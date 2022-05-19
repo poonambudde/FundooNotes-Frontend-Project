@@ -1,0 +1,72 @@
+<div fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="borderStyle" >
+        <div style=" width: 60%;" fxLayout="column" fxLayoutAlign="space-between left" fxClass-xs="column" ngClass.xs="register-xs">     
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div>
+                <div class="flexitem" >
+                <h1>
+                    <span style="color: blue;">F</span>
+                    <span style="color: red;">u</span>
+                    <span style="color: orange;">n</span>
+                    <span style="color: blue;">d</span>
+                    <span style="color: green;">o</span>
+                    <span style="color: red;">o</span>
+                </h1>               
+            </div>
+                <button mat-button class="buttonStyle" style="font-size: large;color: black;">Create your Fundoo Account</button>
+            </div>               
+            <div class="Spaces"  fxClass-xs="column" ngClass.xs="fxClass-xs">
+                <mat-form-field appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input matInput type="First name" formControlName="firstName">
+                    <mat-error>Enter valid first name</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last name</mat-label>
+                    <input matInput type="Last name" formControlName="lastName">
+                    <mat-error>Enter valid last name</mat-error>
+                </mat-form-field>
+            </div> 
+            <div fxLayout="column" fxLayoutAlign="stretch" fxClass-xs="column" ngClass.xs="fxClass-xs">
+                <mat-form-field class="widthforBox" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error>Enter valid Email id</mat-error>
+                    <mat-hint style="font-size: small;">You can use letters,numbers & periods</mat-hint>
+                </mat-form-field>
+            </div>
+            <div fxClass-xs="column" ngClass.xs="fxClass-xs">
+                <button mat-button class="buttonStyle" style="margin-top: 20px;">Use my current email address instead </button>
+            </div>
+            <div  fxClass-xs="column" ngClass.xs="fxClass-xs">
+                <div class="Spaces" fxClass-xs="column" ngClass.xs="fxClass-xs">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Password" formControlName="password">
+                        <mat-error>Enter valid password</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Confirm</mat-label>
+                        <input matInput placeholder="Confirm" formControlName="confirmpassword">
+                        <mat-error>Password not match</mat-error>
+                    </mat-form-field>
+                </div>            
+                <mat-hint style="font-size: small;padding-left: 14px;">Use 8 or more characters with a mix of letters, numbers & symbols </mat-hint>
+                <div class="ShowCheckbox">
+                    <input style="cursor: pointer; " type="checkbox" id="icon">Show password
+                    <!-- <mat-checkbox type="checkbox" style="margin-top: 20px;" (click)="passChange();">Show password</mat-checkbox> -->
+                </div>
+                <div class="Spacesforbutton" fxClass-xs="column" ngClass.xs="fxClass-xs">
+                    <button mat-button class="buttonStyle" routerLink="/login">Sign in instead</button>
+                    <button mat-button class="buttonStyleforNext">Next</button>
+                </div>
+            </div> 
+        </form>
+        </div>    
+        <div class="account" fxHide.xs="true" fxHide.sm="true">
+            <img src="../../../assets/account.svg">
+            <mat-hint>One account. All of Fundoo</mat-hint>
+                <mat-hint> Working for you</mat-hint> 
+        </div>
+    </div>
+</div>  

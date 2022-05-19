@@ -1,0 +1,56 @@
+.borderStylelogin
+{
+  border: 1px solid black;
+  width: 500px;  
+  margin-left: 80px;
+  margin-top: 50px; 
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 20px;
+  justify-content: center;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 20px;
+}
+
+.designEmail
+{
+  width: 80%;
+  padding-right: 40px;
+  padding-left: 30px;
+}
+
+.buttonStyleForForgot
+{
+  border: 0px;
+  color: blue;
+  font-size: small;
+  background-color: transparent;
+  padding-left: 40px;
+}
+
+.Spacesforbutton 
+{
+  display: flex;
+  gap: 20px 220px;
+  width: 490px;
+  color: blue;
+  margin-top: 70px;
+  font-size: medium;
+}
+
+.buttonStyleforCreate
+{
+  padding-left: 40px;
+  border: 0px;
+  color: blue;
+  font-size: medium;
+  background-color: transparent;
+}
+.buttonStyleforNext
+{
+  border: 0px;
+  color: white;
+  background-color: blue;
+  height: 40px;width: 70px;
+}

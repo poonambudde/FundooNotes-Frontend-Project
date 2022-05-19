@@ -1,0 +1,27 @@
+<!-- <div fxLayout="row wrap"  style="padding-left: 5px;margin: 0px; "> 
+    <div class="noteDisplaySetting" fxLayout="column" style="width: 40px;"  >
+ 
+     <input type="text" placeholder="Title" style="font-size: larger;height: 20px;width: 200px;background-color: transparent;border: none;" [(ngModel)]="title">
+     <input type="text" placeholder="description" style="font-size: medium;margin-top: 10px;height: 20px;width: 200px;background-color: transparent;"[(ngModel)]="description">
+
+     <div style="display: flex;">
+       <app-icons style="margin-top: 30px;"></app-icons>
+       <button class="closeButton" (click)="onNoClick()" >Close</button>  
+     </div>
+     
+    </div>
+   
+</div> -->
+
+<div class="note">
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <input class="mat-title" placeholder="Title" matInput mat-dialog-title [(ngModel)]="title"  >
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+      <input class="mat-title" placeholder="Description" matInput mat-dialog-title  [(ngModel)]="description">
+  </div>
+  <app-icons></app-icons>
+ <button class="button" (click)="onNoClick()">Close</button>
+</div>

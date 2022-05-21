@@ -1,33 +1,37 @@
-<!-- <div class="iconsSetting" fxFlex="noshrink">
-    <img class="imageSpace" src="../../../assets/Note Icons/Remind me.svg">
-    <img style="padding-left: 20px;" src="../../../assets/Note Icons/collaborator.svg">
-    <img style="padding-left: 30px;" src="../../../assets/Note Icons/background option.svg">
-    <img style="padding-left: 30px;" src="../../../assets/Note Icons/add image.svg">
-    <img (click)="archive()" style="padding-left: 30px;" src="../../../assets/Note Icons/archive.svg">
-    <button mat-button [matMenuTriggerFor]="menu"> <img src="../../../assets/Note Icons/more.svg" width="20px" height="20px" > </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="delete()">Delete note</button>
-        <button mat-menu-item>Change labels</button>
-        <button mat-menu-item>Add drawing</button>
-        <button mat-menu-item>Make a copy</button>
-        <button mat-menu-item>Show checkboxes</button>
-        <button mat-menu-item>Copy to Google Docs</button>
-        </mat-menu>  
-</div>  -->
-
 <div class="icons" >
-    <button mat-icon-button > <img src="../../../assets/Note Icons/Remind me.svg" width="20px" height="20px"></button>
-    <button mat-icon-button > <img src="../../../assets/Note Icons/collaborator.svg" width="20px" height="20px"></button>
-    <button mat-icon-button > <img src="../../../assets/Note Icons/background option.svg" width="20px" height="20px"></button>
-    <button mat-icon-button > <img src="../../../assets/Note Icons/add image.svg" width="20px" height="20px"></button>
-    <button mat-icon-button (click)="archive()"> <img src="../../../assets/Note Icons/archive.svg" width="20px" height="20px"></button>
-    <button mat-button [matMenuTriggerFor]="menu"><img src="../../../assets/Note Icons/more.svg" width="20px" height="20px"></button>
-     <mat-menu #menu="matMenu">
-     <button mat-menu-item (click)="delete()">Delete note</button>
-     <button mat-menu-item>Change labels</button>
-     <button mat-menu-item>Add drawing</button>
-     <button mat-menu-item>Make a copy</button>
-     <button mat-menu-item>Show checkboxes</button>
-     <button mat-menu-item>Copy to Google Docs</button>
-     </mat-menu>
+    <div *ngIf="!isTrashComponent" fxLayout="row" style="width: 250px;">
+        <button mat-icon-button matTooltip="Remind me"> <img src="../../../assets/Note Icons/Remind me.svg" width="20px"
+                height="20px"></button>
+        <button mat-icon-button matTooltip="Collaborator"> <img src="../../../assets/Note Icons/collaborator.svg"
+                width="20px" height="20px"></button>
+        <button mat-icon-button matTooltip="Background color"> <img src="../../../assets/Note Icons/background option.svg"
+                width="20px" height="20px"></button>
+        <button mat-icon-button matTooltip="add image"> <img src="../../../assets/Note Icons/add image.svg" width="20px"
+                height="20px"></button>
+        <div *ngIf="isDisplaynoteComponent">
+            <button class="archive" mat-icon-button matTooltip="Archive" (click)="archive(notedata)"> <img
+                    src="../../../assets/Note Icons/archive.svg" width="20px" height="20px"></button>
+        </div>
+        <div *ngIf="isArchiveComponent">
+            <button mat-icon-button matTooltip="Unarchive" (click)="archive(notedata);" *ngIf="isArchiveComponent">
+                <img src="../../../assets/Note Icons/unarchive.svg" width="20px" height="20px"></button>
+        </div>
+        <button class="more" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu"><img
+                src="../../../assets/Note Icons/more.svg" width="20px" height="20px"></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="trash(notedata)">Delete note</button>
+            <button mat-menu-item>Change labels</button>
+            <button mat-menu-item>Add drawing</button>
+            <button mat-menu-item>Make a copy</button>
+            <button mat-menu-item>Show checkboxes</button>
+            <button mat-menu-item>Copy to google Docs</button>
+        </mat-menu>
+
+    </div>
+    <div *ngIf="isTrashComponent">
+        <button mat-icon-button matTooltip="Delete Forever" (click)="delete()"> <img
+                src="../../../assets/Note Icons/delete forever.svg" width="20px" height="20px"></button>
+        <button mat-icon-button matTooltip="Restore" (click)="trash(notedata)"> <img
+                src="../../../assets/Note Icons/Restore from trash.svg" width="20px" height="20px"></button>
+    </div>
 </div>

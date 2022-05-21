@@ -8,13 +8,14 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
 import { TrashComponent } from './Components/trash/trash.component';
-
+import { AuthenticationGuard } from './Guard/authentication.guard';
 const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'reset-password/:token',component:ResetPasswordComponent},
-  {path:'dashboard',component:DashboardComponent,
+  {path:'',redirectTo: "/login", pathMatch: 'full'},
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthenticationGuard],
   children:[
     {path: 'notes',component:GetAllNotesComponent},
      {path: 'archive',component:ArchiveComponent},

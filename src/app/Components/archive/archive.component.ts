@@ -8,20 +8,28 @@ import { NoteService } from 'src/app/Services/noteService/note.service';
 })
 export class ArchiveComponent implements OnInit {
   noteList:any
+  
 
   constructor(private note:NoteService) { }
 
   ngOnInit(): void {
+    this.getAllNotes();
+
+    
   }
 
-   GetAllNotes(){
-    this.note.getNote().subscribe((response:any)=>{
-      console.log(response);
+   getAllNotes(){
+    this.note.getNoteService().subscribe((response:any)=>{
+      console.log(response.data);
       this.noteList=response.data;
        this.noteList = this.noteList.filter((object:any)=>{
-         return object.isArchive===true && object.isTrash===false
+         return object.isArchive===true 
        })
     })
+  }
+
+  archiveMessage(event:any) {
+    this.getAllNotes();
   }
 
 }

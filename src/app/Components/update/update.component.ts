@@ -16,9 +16,9 @@ export class UpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
+    console.log(this.data)
     this.title=this.data.title;
     this.description=this.data.description;
-    console.log(this.data)
   }
 
   onNoClick(): void {
@@ -27,10 +27,10 @@ export class UpdateComponent implements OnInit {
       title: this.title,
       description: this.description,
       "bgColour": "string",
-      "isArchive": true,
-      "isReminder": true,
-      "isPin": true,
-      "isTrash": true
+      "isArchive": false,
+      "isReminder": false,
+      "isPin": false,
+      "isTrash": false
     }
     this.note.updateService(data,this.data.noteId).subscribe((res:any)=>
     {
@@ -44,15 +44,12 @@ export class UpdateComponent implements OnInit {
       this.snackBar.open('Failed to update', '', {
       duration: 2000,
       verticalPosition: 'bottom'
-
       });
     }
-    )
-  
-    
+    ) 
   }
 
-   receiveMessage($event:any){
+   receiveMessage(event:any){
      this.onNoClick()
    }
 }

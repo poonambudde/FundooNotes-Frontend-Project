@@ -16,12 +16,12 @@ export class GetAllNotesComponent implements OnInit {
   }
 
   getAllNotes(){
-    this.note.getNote().subscribe((response:any)=>{
+    this.note.getNoteService().subscribe((response:any)=>{
       console.log(response);
       this.noteList=response.data;
-      // this.noteList=this.noteList.filter((Object:any)=>{
-      //   return Object.isArchive===false && Object.isTrash===false
-      // })
+          this.noteList=this.noteList.filter((Object:any)=>{
+            return Object.isArchive===false && Object.isTrash===false
+          })
     })
   }
   
@@ -36,6 +36,10 @@ export class GetAllNotesComponent implements OnInit {
   archiveMessage(event:any) {
      this.getAllNotes();
    }
+
+   trashMessage(event:any){
+    this.getAllNotes();
+  }
 
    deleteMessage(event: any) {
     this.getAllNotes();

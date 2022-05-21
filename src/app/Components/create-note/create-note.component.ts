@@ -27,13 +27,13 @@ export class CreateNoteComponent implements OnInit {
       let data={
         "title": this.title,
         "description": this.desc,
-        "bgColour": "string",
-        "isArchive": true,
-        "isReminder": true,
-        "isPin": true,
-        "isTrash": true        
+        "bgColour": " ",
+        "isArchive": false,
+        "isReminder": false,
+        "isPin": false,
+        "isTrash": false        
       }
-      this.note.addNote(data).subscribe((res: any) => {
+      this.note.addNoteService(data).subscribe((res: any) => {
         console.log(res);
         this.messageEvent.emit("Hello")
         this.snackBar.open('Note Added Successfully', '', {

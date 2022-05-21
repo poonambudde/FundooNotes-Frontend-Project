@@ -9,12 +9,13 @@ import { environment } from 'src/environments/environment';
 export class NoteService {
   base=environment.baseUrl;
   token:any;
+  noteId: any;
 
   constructor(private httpservice:HttpService) {
     this.token=localStorage.getItem('token')
    }
 
-  addNote(data:any)
+  addNoteService(data:any)
   {
     let header ={
       headers: new HttpHeaders({
@@ -27,7 +28,7 @@ export class NoteService {
     return this.httpservice.postService(this.base+'Note/AddNote', data, true, header);
   }
 
-  getNote() {
+  getNoteService() {
 
     let header = {
       headers: new HttpHeaders({
@@ -63,7 +64,7 @@ export class NoteService {
      return this.httpservice.putService(this.base+`Note/ArchieveNote/${noteId}`, {},true,header)
    }
 
-   deleteNote(noteId:any){
+   deleteNoteService(noteId:any){
     console.log("token",this.token);
 
     let header ={
@@ -73,6 +74,18 @@ export class NoteService {
       })
     }
     return this.httpservice.deleteService(this.base+`Note/Delete/${noteId}`,true,header)
-
    }
+
+   trashNoteService( noteId: any, data:any) {
+
+    console.log("token", this.token)
+
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json-patch+json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    }
+    return this.httpservice.putService(this.base + `Note/IsTrash/${noteId}`,data, true, header)
+  }
 }

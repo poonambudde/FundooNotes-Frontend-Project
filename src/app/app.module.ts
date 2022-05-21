@@ -15,7 +15,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { GetAllNotesComponent } from './Components/get-all-notes/get-all-notes.component';
-import { TakeNoteComponent } from './Components/take-note/take-note.component';
 import { IconsComponent } from './Components/icons/icons.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -26,8 +25,11 @@ import { DisplaynoteComponent } from './Components/displaynote/displaynote.compo
 import { UpdateComponent } from './Components/update/update.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-// import { MatCardModule, MatButtonModule, MatMenuModule } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
+import { ArchiveComponent } from './Components/archive/archive.component';
+import { TrashComponent } from './Components/trash/trash.component';
+import { AuthguardServiceService } from './Services/AuthguardService/authguard-service.service';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,11 +39,12 @@ import {MatMenuModule} from '@angular/material/menu';
     ResetPasswordComponent,
     DashboardComponent,
     GetAllNotesComponent,
-    TakeNoteComponent,
     IconsComponent,
     CreateNoteComponent,
     DisplaynoteComponent,
-    UpdateComponent
+    UpdateComponent,
+    ArchiveComponent,
+    TrashComponent
     
 
   ],
@@ -61,13 +64,14 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatDialogModule,
     MatSnackBarModule,
-    // MatCardModule,
-    // MatButtonModule,
-    // MatMenuModule
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
+    
 
   ],
-  providers: [],
+  providers: [
+    AuthguardServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

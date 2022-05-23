@@ -61,7 +61,7 @@ export class NoteService {
          'Authorization':'Bearer '+this.token   
        })
      }
-     return this.httpservice.putService(this.base+`Note/ArchieveNote/${noteId}`, {},true,header)
+     return this.httpservice.putService(this.base+`Note/ArchiveNote/${noteId}`, {},true,header)
    }
 
    deleteNoteService(noteId:any){
@@ -87,5 +87,17 @@ export class NoteService {
       })
     }
     return this.httpservice.putService(this.base + `Note/IsTrash/${noteId}`,data, true, header)
+  }
+
+  changeColorService(noteId: any, newcolor:any){
+    console.log("token",this.token,noteId);
+  
+   let header ={
+     headers: new HttpHeaders({
+      'Content-Type': 'application/json-patch+json',
+      'Authorization': 'Bearer ' + this.token
+     })
+   }
+   return this.httpservice.putService(this.base + `Note/ChangeColorNote/${noteId}?color=?${newcolor}`,{},true,header)
   }
 }

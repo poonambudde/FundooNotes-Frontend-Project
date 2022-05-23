@@ -49,7 +49,7 @@ export class UpdateComponent implements OnInit {
     ) 
   }
 
-   receiveMessage(event:any){
+  receiveMessage(event:any){
      this.onNoClick()
    }
 }

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.value.password,
       }
       this.user.userlogin(data).subscribe((result: any) => {
-        console.log(result.message)
+        console.log(result.message) 
          localStorage.setItem('token', result.message)
              this.snackBar.open('login Successful !','',{
                duration: 2000,

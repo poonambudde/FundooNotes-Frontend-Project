@@ -5,7 +5,11 @@
     </div>
     <div *ngIf="!isShow || isShow" (click)= "Show()">
         <input class="takenote" style="height:2px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
-        
+        <span *ngIf="!isShow">
+            <img style="padding-left: 35px; " src="../../../assets/Note Icons/check_box.svg">
+            <img style="padding-left: 35px;" src="../../../assets/Note Icons/brush.svg">               
+            <img style="padding-left: 35px;" src="../../../assets/Note Icons/add image.svg">
+        </span>   
     </div>
     <div *ngIf="isShow" fxLayout="row" fxLayoutAlign="space-between centre">
         <app-icons></app-icons>

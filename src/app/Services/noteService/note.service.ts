@@ -89,7 +89,7 @@ export class NoteService {
     return this.httpservice.putService(this.base + `Note/IsTrash/${noteId}`,data, true, header)
   }
 
-  changeColorService(noteId: any, newcolor:any){
+  changeColor(noteId: any, color:any){
     console.log("token",this.token,noteId);
   
    let header ={
@@ -98,6 +98,6 @@ export class NoteService {
       'Authorization': 'Bearer ' + this.token
      })
    }
-   return this.httpservice.putService(this.base + `Note/ChangeColorNote/${noteId}?color=?${newcolor}`,{},true,header)
+   return this.httpservice.putService(this.base + `Note/ChangeColorNote/${noteId}?color=${color}`,{},true,header)
   }
 }

@@ -34,7 +34,7 @@ export class UpdateComponent implements OnInit {
     }
     this.note.updateService(data,this.data.noteId).subscribe((res:any)=>
     {
-      console.log("update response=",res); 
+      console.log("update response=",res);
       this.dialogRef.close(res);
       this.snackBar.open('Note updated successfully', '', {
         duration: 3000,
@@ -44,9 +44,11 @@ export class UpdateComponent implements OnInit {
       this.snackBar.open('Failed to update', '', {
       duration: 2000,
       verticalPosition: 'bottom'
+
       });
     }
-    ) 
+    )
+   
   }
 
   receiveMessage(event:any){

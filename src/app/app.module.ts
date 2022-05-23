@@ -30,6 +30,7 @@ import { ArchiveComponent } from './Components/archive/archive.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { AuthguardServiceService } from './Services/AuthguardService/authguard-service.service';
 import {MatCardModule} from '@angular/material/card';
+import{ MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
     
 
   ],

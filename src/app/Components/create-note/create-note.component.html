@@ -3,12 +3,20 @@
         <input  class="title" style="font-size: large ;width: 300px;border:none;" placeholder="Title" [(ngModel)]="title">
         <img style="margin-left: 250px;" src="../../../assets/Note Icons/pin note.svg">
     </div>
-    <div *ngIf="!isShow || isShow" (click)= "Show()">
-        <input class="takenote" style="height:2px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
-        
+    <div fxLayout="row" *ngIf="!isShow || isShow" (click)= "Show()">
+        <div *ngIf="!isShow || isShow">
+            <input class="takenote" style="height:2px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
+        </div>
+        <div *ngIf="!isShow">
+            <span >
+                <img style="padding-left: 35px; " src="../../../assets/Note Icons/check_box.svg">
+                <img style="padding-left: 35px;" src="../../../assets/Note Icons/brush.svg">               
+                <img style="padding-left: 35px;" src="../../../assets/Note Icons/add image.svg">
+            </span>
+        </div>   
     </div>
     <div *ngIf="isShow" fxLayout="row" fxLayoutAlign="space-between centre">
         <app-icons></app-icons>
         <button  mat-button style="font-size: large;background-color: white;border:0px white;margin-right: 40px;padding-top:35px;" (click)="close()" >Close</button>
     </div>
-</div>  
+</div> 

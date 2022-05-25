@@ -1,12 +1,11 @@
-<div class="note">
+<div class="note" [style.background]="data.bgColour">
 
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <input class="mat-title" placeholder="Title" matInput mat-dialog-title [(ngModel)]="title"  >
   </div>
-
   <div fxLayout="row" fxLayoutAlign="space-between center">
       <input class="mat-title" placeholder="Description" matInput mat-dialog-title  [(ngModel)]="description">
   </div>
   <app-icons style="margin-top: 30px;"></app-icons>
- <button class="button" (click)="onNoClick()">Close</button>
+  <button class="button" (click)="onNoClick()">Close</button>
 </div>

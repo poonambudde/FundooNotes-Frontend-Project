@@ -1,10 +1,10 @@
 <div fxLayout="row wrap">
-    <div class="noteDisplaySetting" style="border: 1px solid rgb(173, 173, 173); margin: 15px; width: 300px;height: 190px;border-radius: 12px; " *ngFor="let note of receivedNoteList "fxLayout="column" >
+    <div class="noteDisplaySetting" [style.background]="note.bgColour" style="border: 1px solid rgb(173, 173, 173); margin: 15px; width: 300px;height: 190px;border-radius: 12px; " *ngFor="let note of receivedNoteList | filter : filteredString" fxLayout="column" >
         <p style="margin: 15px;" (click)="openDialog(note)" >{{note.title}}</p>
         <p style="margin: 15px;" (click)="openDialog(note)">{{note.description}}</p>
         <p>{{note.token}}</p>
         <div class="icons" style="margin-left: -8px;">
             <app-icons class="allicons" [notedata]="note"(archiveEvent)="archiveMessage($event)"(deleteEvent)="deleteMessage($event)"(trashEvent)="trashMessage($event)"></app-icons>
-        </div>
-    </div>
-</div> 
+        </div> 
+    </div> 
+</div>

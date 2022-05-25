@@ -1,3 +1,42 @@
+<!-- <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="white" class="example-toolbar">
+      <button style="border: 0px;" mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img class="keepImage" src="../../../assets/Dashboard Icons/keep.png">
+      <h1 class="example-app-name">  Fundoo</h1>
+
+      <div class="wholesearchbox">
+        <img style=" color: #5f6368;margin-left: 10px; height: 30px;padding-right: 10px;" src="../../../assets/Dashboard Icons/search.svg">    
+        <input class="inputSearchbox" type="text" placeholder="Search" (keyup)="filter($event)">
+      </div>
+      <img style="padding-left: 115px;padding-top: 10px;" src="../../../assets/Dashboard Icons/refresh.svg">
+      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/list view.svg">
+      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/settings.svg">
+      <img style="padding-left: 70px;padding-top: 10px;" src="../../../assets/Dashboard Icons/apps.svg">
+      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/person.svg">
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"> 
+        <mat-nav-list style="height: 300px; padding-right: 50px;">
+          <a mat-list-item routerLink="/dashboard/notes"><img class="icon" src="../../../assets/Dashboard Icons/lightbulb.svg">notes</a>
+          <a mat-list-item routerLink="."><img class="icon" src="../../../assets/Dashboard Icons/notifications.svg">reminders</a>
+          <a mat-list-item routerLink="."><img class="icon" src="../../../assets/Dashboard Icons/edit.svg">Edit labels</a>
+          <a mat-list-item routerLink="archive"><img class="icon" src="../../../assets/Dashboard Icons/archive.svg">archive</a>
+          <a mat-list-item routerLink="trash"><img class="icon" src="../../../assets/Dashboard Icons/delete.svg">trash</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>    
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+</div> -->
+
+
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar color="white" class="example-toolbar">
       <button style="border: 0px;" mat-icon-button (click)="snav.toggle()">
@@ -5,12 +44,21 @@
       </button>
       <img class="keepImage" src="../../../assets/Dashboard Icons/keep.png">
       <h1 class="example-app-name">  Fundoo</h1>
+
       <div class="wholesearchbox">
         <img style=" color: #5f6368;margin-left: 10px; height: 30px;padding-right: 10px;" src="../../../assets/Dashboard Icons/search.svg">    
-        <input class="inputSearchbox" type="text" placeholder="Search">
+        <input class="inputSearchbox" type="text" placeholder="Search" (keyup)="filter($event)" >
       </div>
+
+      <div *ngIf="!grid">
+        <button style="border: 0px;background-color: white; padding-left: 20px;" (click)="formatListView();FormatView()"><img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/list view.svg"></button>
+       </div>
+       <div *ngIf="grid">
+          <button class="button" (click)="formatGridView();FormatView()"><img style="padding-top: 12px;" src="../../../assets/Dashboard Icons/grid view.svg"></button>
+       </div>
+
       <img style="padding-left: 115px;padding-top: 10px;" src="../../../assets/Dashboard Icons/refresh.svg">
-      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/view_agenda.svg">
+      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/list view.svg">
       <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/settings.svg">
       <img style="padding-left: 70px;padding-top: 10px;" src="../../../assets/Dashboard Icons/apps.svg">
       <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/person.svg">
@@ -33,4 +81,4 @@
         <router-outlet></router-outlet>    
       </mat-sidenav-content>
     </mat-sidenav-container>
-  </div>
+</div>

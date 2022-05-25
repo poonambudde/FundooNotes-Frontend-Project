@@ -1,6 +1,3 @@
-.remind{
-    margin-bottom: 500px;
-}
 .icons button{
     margin-left: 14px;
     margin-top: 30px;
@@ -8,37 +5,40 @@
     background-color: white;
     border: none;
     opacity: 50px;
+    border:0px;
+    background-color: transparent;
 }
-.archive{
-    margin-left: 10px;
-}
-.more{
-   margin-right: 10px;
+
+.bg-color{
+    width: 55px;
+    //width: 30px;
+    //border: 2px solid red;
+    height: 30px;
+      display: flex;
+     flex-wrap: wrap;
+      flex-direction: row;
+      border-color: black;
 }
 
 .colorboxSetting
 {
-    width: 75px;
-    height: 50px;
-    border-radius: 12px;
+    background-color: transparent;
+    //width: 30px;
+    //height: 30px;
+    border-radius: 20px;
+    margin: auto;
     border: 0px solid;
-    // display: flex;
-    // flex-direction: row wrap;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-.imageSetting img{
-    height: 20px;
+.bg-color button{
+    height: 30px;
+     width:30px; 
+     display: block;
+     border-radius: 100px;
+
 }
-.pallete
-{
-    // display: inline-table;
-      width: auto;
-    // display: flex;
-    // flex-direction: column;
-    display: inline-block;
-    height: 10px;
-    //  width: 15%;
-    // height: 12px;
-}
+
+ button:hover{
+     background-color: rgb(247, 233, 217) ; 
+     //border-color: black;
+ }

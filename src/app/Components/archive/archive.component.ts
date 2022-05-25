@@ -8,16 +8,13 @@ import { NoteService } from 'src/app/Services/noteService/note.service';
 })
 export class ArchiveComponent implements OnInit {
   noteList:any
-  
 
   constructor(private note:NoteService) { }
 
   ngOnInit(): void {
     this.getAllNotes();
 
-    
   }
-
    getAllNotes(){
     this.note.getNoteService().subscribe((response:any)=>{
       console.log(response.data);

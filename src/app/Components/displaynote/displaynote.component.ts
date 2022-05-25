@@ -8,6 +8,8 @@ import { UpdateComponent } from '../update/update.component';
   styleUrls: ['./displaynote.component.scss']
 })
 export class DisplaynoteComponent implements OnInit {
+  filteredString = '';
+
   @Input() receivedNoteList:any;
   @Output() updateEvent = new EventEmitter<string>();
   @Output() archiveEvent = new EventEmitter<string>();

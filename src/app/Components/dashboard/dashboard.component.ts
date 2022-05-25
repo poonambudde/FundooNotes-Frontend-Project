@@ -1,5 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { DataService } from 'src/app/Services/dataService/data.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,7 @@ export class DashboardComponent implements OnDestroy {
    grid = false;
    formatGridList = false;
    filteredString: string = '';
+   title: string = '';
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -31,7 +34,7 @@ export class DashboardComponent implements OnDestroy {
 
 
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -41,10 +44,10 @@ export class DashboardComponent implements OnDestroy {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  filter(event:any)
+  searchNote(event:any)
   {
-      this.nextData.dataPipe("event",event.target.value);
-      this.nextData.dataPipe("event",event);
+      console.log("event",event.target.value)
+      this.dataService.changeMessage(event.target.value)
   }
 
   FormatView() {
@@ -60,14 +63,16 @@ export class DashboardComponent implements OnDestroy {
 
   formatListView() {
     this.grid = false
-    this.nextData.nextDataUpdate(this.FormatView().valueOf())
+    this.nextData(this.FormatView().valueOf())
     console.log("value ", this.FormatView())
   }
 
   formatGridView() {
     this.grid = true
-    this.nextData.nextDataUpdate(this.FormatView().valueOf())
+    this.nextData(this.FormatView().valueOf())
     console.log("value ", this.FormatView())
   }
+
+  
 
 }

@@ -27,7 +27,7 @@ export class UpdateComponent implements OnInit {
     { 
       title: this.title,
       description: this.description,
-      "bgColour": "string",
+      "bgColour": " ",
       "isArchive": false,
       "isReminder": false,
       "isPin": false,
@@ -53,4 +53,8 @@ export class UpdateComponent implements OnInit {
   receiveMessage(event:any){
      this.onNoClick()
    }
+
+  //  trashMessage(event:any){
+  //   this.data.bgColour=event;
+  // }
 }

@@ -18,6 +18,7 @@ export class IconsComponent implements OnInit {
   isTrash:any;
 
   @Input() notedata:any;
+//@Output() ReceiveEvent = new EventEmitter<string>();
   @Output() archiveEvent = new EventEmitter<string>();
   @Output() trashEvent = new EventEmitter<string>();
   @Output() deleteEvent = new EventEmitter<string>();
@@ -65,15 +66,11 @@ archive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
-    ) 
-    }
+  ) 
+}
          
-
 Unarchive() {
-  let data = {
-    isArchived: false,
-  }
-  this.note.archiveService(data).subscribe((res:any)=>{
+  this.note.archiveService(this.notedata.noteId).subscribe((res:any)=>{
     console.log("unarchive a note",res);
     this.archiveEvent.emit(res)
     this.snackBar.open('Note Unarchived', '', {
@@ -96,8 +93,8 @@ Unarchive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
-    ) 
-    }
+  ) 
+}
 
     deleteForeverNotes(){
     this.note.deleteNoteService(this.notedata.noteId).subscribe((response:any)=>{

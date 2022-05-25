@@ -32,7 +32,7 @@ import { AuthguardServiceService } from './Services/AuthguardService/authguard-s
 import {MatCardModule} from '@angular/material/card';
 import{ MatTooltipModule} from '@angular/material/tooltip';
 import { FilterPipe } from './Pipes/filter.pipe';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -71,7 +71,8 @@ import { FilterPipe } from './Pipes/filter.pipe';
     MatSnackBarModule,
     MatMenuModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
     
 
   ],

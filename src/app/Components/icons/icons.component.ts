@@ -18,7 +18,6 @@ export class IconsComponent implements OnInit {
   isTrash:any;
 
   @Input() notedata:any;
-//@Output() ReceiveEvent = new EventEmitter<string>();
   @Output() archiveEvent = new EventEmitter<string>();
   @Output() trashEvent = new EventEmitter<string>();
   @Output() deleteEvent = new EventEmitter<string>();
@@ -66,6 +65,7 @@ archive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
+
   ) 
 }
          
@@ -119,7 +119,7 @@ Unarchive() {
     })
   }
 
-  changeColor(color:any){
+changeColor(color:any){
     console.log(color);
 
     this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {

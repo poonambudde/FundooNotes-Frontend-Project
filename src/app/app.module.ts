@@ -50,7 +50,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ArchiveComponent,
     TrashComponent,
     FilterPipe
-    
 
   ],
   imports: [
@@ -73,8 +72,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatTooltipModule,
     MatGridListModule
-    
-
   ],
   providers: [
     AuthguardServiceService

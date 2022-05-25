@@ -1,5 +1,5 @@
 <div fxLayout="row wrap">
-    <div class="noteDisplaySetting" [style.background]="note.bgColour"[class.gridToList]="gridList" style="border: 1px solid rgb(173, 173, 173); margin: 15px; width: 300px;height: 190px;border-radius: 12px; " *ngFor="let note of receivedNoteList | filter : Searchtitle" fxLayout="column" >
+    <div class="noteDisplaySetting" [style.background]="note.bgColour" style="border: 1px solid rgb(173, 173, 173); margin: 15px; width: 300px;height: 190px;border-radius: 12px; " *ngFor="let note of receivedNoteList "fxLayout="column" >
         <p style="margin: 15px;" (click)="openDialog(note)" >{{note.title}}</p>
         <p style="margin: 15px;" (click)="openDialog(note)">{{note.description}}</p>
         <p>{{note.token}}</p>

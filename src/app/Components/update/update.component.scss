@@ -3,9 +3,19 @@
 }
 .button{
 margin-left: 300px;
-background-color: white;
+background-color: transparent;
 font-size: large;
+}
+
+.mat-title{
+  background-color: transparent;
 }
 input {border:0;outline:0;}
 
 button {border:0;outline:0;}
+
+::ng-deep mat-dialog-container {
+  border-radius: 10px !important;
+  padding: 0px !important;
+  padding-bottom: 50px;
+}

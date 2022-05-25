@@ -31,6 +31,9 @@ import { TrashComponent } from './Components/trash/trash.component';
 import { AuthguardServiceService } from './Services/AuthguardService/authguard-service.service';
 import {MatCardModule} from '@angular/material/card';
 import{ MatTooltipModule} from '@angular/material/tooltip';
+import { FilterPipe } from './Pipes/filter.pipe';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +48,8 @@ import{ MatTooltipModule} from '@angular/material/tooltip';
     DisplaynoteComponent,
     UpdateComponent,
     ArchiveComponent,
-    TrashComponent
-    
+    TrashComponent,
+    FilterPipe
 
   ],
   imports: [
@@ -67,9 +70,8 @@ import{ MatTooltipModule} from '@angular/material/tooltip';
     MatSnackBarModule,
     MatMenuModule,
     MatCardModule,
-    MatTooltipModule
-    
-
+    MatTooltipModule,
+    MatGridListModule
   ],
   providers: [
     AuthguardServiceService

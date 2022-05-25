@@ -8,3 +8,39 @@
     border:0px;
     background-color: transparent;
 }
+
+.bg-color{
+    width: 55px;
+    //width: 30px;
+    //border: 2px solid red;
+    height: 30px;
+      display: flex;
+     flex-wrap: wrap;
+      flex-direction: row;
+      border-color: black;
+}
+
+.colorboxSetting
+{
+    background-color: transparent;
+    //width: 30px;
+    //height: 30px;
+    border-radius: 20px;
+    margin: auto;
+    border: 0px solid;
+}
+
+.bg-color button{
+    height: 30px;
+     width:30px; 
+     display: block;
+     border-radius: 100px;
+}
+
+ button:hover{
+     background-color: rgb(247, 233, 217) ; 
+     //border-color: black;
+ }
+
+
+}

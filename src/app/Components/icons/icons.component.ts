@@ -65,15 +65,12 @@ archive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
-    ) 
-    }
-         
 
+  ) 
+}
+         
 Unarchive() {
-  let data = {
-    isArchived: false,
-  }
-  this.note.archiveService(data).subscribe((res:any)=>{
+  this.note.archiveService(this.notedata.noteId).subscribe((res:any)=>{
     console.log("unarchive a note",res);
     this.archiveEvent.emit(res)
     this.snackBar.open('Note Unarchived', '', {
@@ -96,10 +93,10 @@ Unarchive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
-    ) 
-    }
+  ) 
+}
 
-  delete(){
+    deleteForeverNotes(){
     this.note.deleteNoteService(this.notedata.noteId).subscribe((response:any)=>{
       console.log("Note deleted successfully!!!", response);
       this.deleteEvent.emit(response);
@@ -110,7 +107,19 @@ Unarchive() {
     })
   } 
 
-  changeColor(color:any){
+  restoreNotes()
+  {
+    this.note.trashNoteService(this.notedata.noteId,this.data).subscribe((response:any)=>{
+    console.log("note restored",response);
+    this.deleteEvent.emit(response);
+    this.snackBar.open('Note restored successfully!!!', '', {
+      duration: 3000,
+      verticalPosition: 'bottom'
+    })
+    })
+  }
+
+changeColor(color:any){
     console.log(color);
 
     this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {

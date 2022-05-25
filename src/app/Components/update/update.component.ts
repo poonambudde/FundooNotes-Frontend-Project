@@ -10,6 +10,7 @@ import { NoteService } from 'src/app/Services/noteService/note.service';
 export class UpdateComponent implements OnInit {
   title:any;
   description:any;
+  bgColour:any;
   
 
   constructor(private snackBar: MatSnackBar, private note:NoteService,public dialogRef: MatDialogRef<UpdateComponent>,
@@ -26,12 +27,13 @@ export class UpdateComponent implements OnInit {
     { 
       title: this.title,
       description: this.description,
-      "bgColour": "string",
+      "bgColour": " ",
       "isArchive": false,
       "isReminder": false,
       "isPin": false,
       "isTrash": false
     }
+    
     this.note.updateService(data,this.data.noteId).subscribe((res:any)=>
     {
       console.log("update response=",res);
@@ -47,8 +49,7 @@ export class UpdateComponent implements OnInit {
 
       });
     }
-    )
-   
+    )  
   }
 
   receiveMessage(event:any){

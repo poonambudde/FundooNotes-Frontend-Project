@@ -33,7 +33,6 @@ import {MatCardModule} from '@angular/material/card';
 import{ MatTooltipModule} from '@angular/material/tooltip';
 import { FilterPipe } from './Pipes/filter.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +49,7 @@ import { FilterPipe } from './Pipes/filter.pipe';
     ArchiveComponent,
     TrashComponent,
     FilterPipe
-    
-
+ 
   ],
   imports: [
     BrowserModule,
@@ -72,8 +70,7 @@ import { FilterPipe } from './Pipes/filter.pipe';
     MatMenuModule,
     MatCardModule,
     MatTooltipModule
-    
-
+   
   ],
   providers: [
     AuthguardServiceService

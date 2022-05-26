@@ -7,13 +7,16 @@
         <div *ngIf="!isShow || isShow">
             <input class="takenote" style="height:2px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
         </div>
-        <div *ngIf="!isShow">
-            <span >
-                <img style="padding-left: 35px; " src="../../../assets/Note Icons/check_box.svg">
-                <img style="padding-left: 35px;" src="../../../assets/Note Icons/brush.svg">               
-                <img style="padding-left: 35px;" src="../../../assets/Note Icons/add image.svg">
-            </span>
-        </div>   
+        <div *ngIf="!isShow" class="icons" >
+            <button mat-icon-button matTooltip="New list"> <img src="../../../assets/Note Icons/check_box.svg" width="24px" height="24px"></button>
+            <button mat-icon-button matTooltip=" New note with drawing"> <img src="../../../assets/Note Icons/brush.svg" width="24px" height="24px"></button>
+            <button mat-icon-button matTooltip=" New note with image"> <img src="../../../assets/Note Icons/add image.svg" width="24px" height="24px"></button>
+        </div>
+            <!-- <span >
+                <img style="padding-left: 65px; " src="../../../assets/Note Icons/check_box.svg">
+                <img style="padding-right: 35px;" src="../../../assets/Note Icons/brush.svg">               
+                <img style="padding-left: 65px;" src="../../../assets/Note Icons/add image.svg">
+            </span> --> 
     </div>
     <div *ngIf="isShow" fxLayout="row" fxLayoutAlign="space-between centre">
         <app-icons></app-icons>

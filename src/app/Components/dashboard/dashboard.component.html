@@ -11,16 +11,20 @@
         <input class="inputSearchbox" type="text" placeholder="Search" (keyup)="searchNote($event)" >
       </div>
 
-      <img style="margin-right: 0px;padding-top: 8px;" src="../../../assets/Dashboard Icons/refresh.svg">
-      <div *ngIf="!grid">
-        <button style="border: 0px;background-color: white; padding-left: 30px; padding-top: 10px;" (click)="formatListView();FormatView()"><img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/list view.svg"></button>
-       </div>
-       <div *ngIf="grid">
-          <button class="button" (click)="formatGridView();FormatView()"><img style="padding-top: 12px;" src="../../../assets/Dashboard Icons/grid view.svg"></button>
-       </div>
+      <img style="padding-left: 115px;padding-top: 10px;" src="../../../assets/Dashboard Icons/refresh.svg">
+      <div>
+        <img style="padding-left: 30px;padding-top: 20px;" src="../../../assets/Dashboard Icons/list view.svg">
+      </div>
+       <!-- <div>
+          <button class="button"><img style="padding-top: 12px;" src="../../../assets/Dashboard Icons/grid view.svg"></button>
+       </div> -->
       <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/settings.svg">
       <img style="padding-left: 70px;padding-top: 10px;" src="../../../assets/Dashboard Icons/apps.svg">
-      <img style="padding-left: 30px;padding-top: 10px;" src="../../../assets/Dashboard Icons/person.svg">
+      <div>
+        <button class="person" (click)="logout()"><img style="padding-top:10px margin-left=50px;block-size:30px;margin-top: 12px;"
+            src="../../../assets/Dashboard Icons/person.svg"></button>
+      </div>
+      
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container"
@@ -31,8 +35,8 @@
           <a mat-list-item routerLink="/dashboard/notes"><img class="icon" src="../../../assets/Dashboard Icons/lightbulb.svg">notes</a>
           <a mat-list-item routerLink="."><img class="icon" src="../../../assets/Dashboard Icons/notifications.svg">reminders</a>
           <a mat-list-item routerLink="."><img class="icon" src="../../../assets/Dashboard Icons/edit.svg">Edit labels</a>
-          <a mat-list-item routerLink="archive"><img class="icon" src="../../../assets/Dashboard Icons/archive.svg">archive</a>
-          <a mat-list-item routerLink="trash"><img class="icon" src="../../../assets/Dashboard Icons/delete.svg">trash</a>
+          <a mat-list-item routerLink="/dashboard/archive"><img class="icon" src="../../../assets/Dashboard Icons/archive.svg">archive</a>
+          <a mat-list-item routerLink="/dashboard/trash"><img class="icon" src="../../../assets/Dashboard Icons/delete.svg">trash</a>
         </mat-nav-list>
       </mat-sidenav>
   

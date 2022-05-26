@@ -2,12 +2,14 @@ import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteService } from 'src/app/Services/noteService/note.service';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
+  noteId:any;
   title:any;
   description:any;
   bgColour:any;
@@ -27,7 +29,7 @@ export class UpdateComponent implements OnInit {
     { 
       title: this.title,
       description: this.description,
-      "bgColour": " ",
+      "bgColour": "string",
       "isArchive": false,
       "isReminder": false,
       "isPin": false,
@@ -49,12 +51,4 @@ export class UpdateComponent implements OnInit {
     }
     )  
   }
-
-  receiveMessage(event:any){
-     this.onNoClick()
-   }
-
-  //  trashMessage(event:any){
-  //   this.data.bgColour=event;
-  // }
 }

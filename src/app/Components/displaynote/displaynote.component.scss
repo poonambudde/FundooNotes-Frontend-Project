@@ -1,6 +1,6 @@
  .noteDisplaySetting
  {
-     border: 1px solid green; 
+     border: 1px solid grey;
      margin-left: 70px;
      border-color: #e0e0e0;
      margin-top: 50px;
@@ -17,5 +17,5 @@
      display: block; 
  }
  .noteDisplaySetting:hover{
-     box-shadow: 1px 1px 1px 1px rgb(204, 204, 204);
+    box-shadow: 1px 1px 3px 3px rgba(157, 167, 170, 0.215);
  }

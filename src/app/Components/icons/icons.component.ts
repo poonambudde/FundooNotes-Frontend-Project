@@ -18,12 +18,8 @@ export class IconsComponent implements OnInit {
   isTrash:any;
 
   @Input() notedata:any;
-//@Output() ReceiveEvent = new EventEmitter<string>();
-  @Output() archiveEvent = new EventEmitter<string>();
-  @Output() trashEvent = new EventEmitter<string>();
-  @Output() deleteEvent = new EventEmitter<string>();
-  
 
+  @Output() UpdateEvent = new EventEmitter<any>();
   isDisplaynoteComponent=false;
   isArchiveComponent=false;
   isTrashComponent=false;
@@ -57,7 +53,7 @@ archive() {
        this.isArchive=false;
        this.note.archiveService(this.notedata.noteId).subscribe((response: any) => {
          console.log(response);
-         this.archiveEvent.emit(response)
+         this.UpdateEvent.emit(response)
          this.snackBar.open('Note Archived successfully..', '', {
           duration: 3000,
           verticalPosition: 'bottom'
@@ -72,7 +68,7 @@ archive() {
 Unarchive() {
   this.note.archiveService(this.notedata.noteId).subscribe((res:any)=>{
     console.log("unarchive a note",res);
-    this.archiveEvent.emit(res)
+    this.UpdateEvent.emit(res)
     this.snackBar.open('Note Unarchived', '', {
       duration: 3000,
       verticalPosition: 'bottom'
@@ -81,10 +77,9 @@ Unarchive() {
 }
 
   trash(note:any) {
-    this.isTrash = !note.isTrash;
     this.note.trashNoteService(this.notedata.noteId,this.data).subscribe((response: any) => {
       console.log(response);
-      this.trashEvent.emit(response)
+      this.UpdateEvent.emit(response)
       this.snackBar.open('Note trashed successfully..', '', {
           duration: 3000,
           verticalPosition: 'bottom'
@@ -99,7 +94,7 @@ Unarchive() {
     deleteForeverNotes(){
     this.note.deleteNoteService(this.notedata.noteId).subscribe((response:any)=>{
       console.log("Note deleted successfully!!!", response);
-      this.deleteEvent.emit(response);
+      this.UpdateEvent.emit(response);
       this.snackBar.open('Note deleted successfully!!!', '', {
         duration: 3000,
         verticalPosition: 'bottom'
@@ -111,7 +106,7 @@ Unarchive() {
   {
     this.note.trashNoteService(this.notedata.noteId,this.data).subscribe((response:any)=>{
     console.log("note restored",response);
-    this.deleteEvent.emit(response);
+    this.UpdateEvent.emit(response);
     this.snackBar.open('Note restored successfully!!!', '', {
       duration: 3000,
       verticalPosition: 'bottom'
@@ -125,7 +120,7 @@ Unarchive() {
     this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {
       console.log(response);
       
-      this.deleteEvent.emit(response)
+      this.UpdateEvent.emit(response)
       this.snackBar.open('Note Background Color Changed Successfully!!!', '', {
           duration: 3000,
           verticalPosition: 'bottom'

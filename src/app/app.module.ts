@@ -73,8 +73,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatTooltipModule,
     MatGridListModule
-    
-
   ],
   providers: [
     AuthguardServiceService

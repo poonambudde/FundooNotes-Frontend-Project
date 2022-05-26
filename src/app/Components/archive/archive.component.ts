@@ -20,12 +20,12 @@ export class ArchiveComponent implements OnInit {
       console.log(response.data);
       this.noteList=response.data;
        this.noteList = this.noteList.filter((object:any)=>{
-         return object.isArchive===true 
+         return object.isArchive===true && object.isTrash===false
        })
     })
   }
 
-  archiveMessage(event:any) {
+  DisplayMessage(event:any) {
     this.getAllNotes();
   }
 

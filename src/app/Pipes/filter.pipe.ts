@@ -5,19 +5,36 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any, Searchtitle: string) {
-    if(items && items.length){
-      return items.filter((item:{ title: string}) =>{
-        if (Searchtitle && item.title.toLowerCase().indexOf(Searchtitle.toLowerCase()) === -1){
-          return false;
+  transform(value: any, args?: any) {
+    console.log(args);
+    if(args == "default message"){
+      console.log("inside if in pipe", args);
+      return value;
+    }else{
+      args=args.toLocaleLowerCase();
+    }
+    
 
-        }
-      return true;
+     console.log("value in pipe",value);
+     console.log("argument", args, typeof args);
+    
+    return value.filter((note:any) =>{
+      return note.title.toLocaleLowerCase().includes(args) | note.description.toLocaleLowerCase().includes(args);
+      
     })
-  }
-  else{
-    return items;
-  }   
+  //   if(items && items.length){
+  //     return items.filter((item:{ title: string}) =>{
+  //       if (Searchtitle && item.title.toLocaleLowerCase().indexOf(Searchtitle.toLocaleLowerCase()) === -1){
+  //         return false;
+
+  //       }
+  //     return true;
+  //   })
+  // }
+  // else{
+  //   return items;
+  // }  
+
   }
 }
 

@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { DataService } from 'src/app/Services/dataService/data.service';
-
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -30,11 +29,8 @@ export class DashboardComponent implements OnDestroy {
   );
 
   private _mobileQueryListener: () => void;
-  nextData: any;
 
-
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -50,28 +46,14 @@ export class DashboardComponent implements OnDestroy {
       this.dataService.changeMessage(event.target.value)
   }
 
-  FormatView() {
-    if (this.formatGridList == false) {
-      this.formatGridList = true
-      return this.formatGridList
-    }
-    else {
-      this.formatGridList = false
-      return this.formatGridList
-    }
+  logout()
+  {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl("/login")
+    console.log("logout sucessfully!!!");
   }
 
-  formatListView() {
-    this.grid = false
-    this.nextData(this.FormatView().valueOf())
-    console.log("value ", this.FormatView())
-  }
-
-  formatGridView() {
-    this.grid = true
-    this.nextData(this.FormatView().valueOf())
-    console.log("value ", this.FormatView())
-  }
+ 
 
   
 

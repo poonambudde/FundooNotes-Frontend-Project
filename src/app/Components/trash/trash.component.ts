@@ -8,7 +8,6 @@ import { NoteService } from 'src/app/Services/noteService/note.service';
 })
 export class TrashComponent implements OnInit {
   noteList:any 
-  @Output() trashEvent = new EventEmitter<string>();
 
   constructor(private note:NoteService) { }
 
@@ -27,11 +26,7 @@ export class TrashComponent implements OnInit {
     }
   )}
 
-  trashMessage(event:any){
-    this.getAllNotes();
-  }
-
-  deleteMessage(event:any){
+  DisplayMessage(event:any){
     this.getAllNotes();
   }
 }

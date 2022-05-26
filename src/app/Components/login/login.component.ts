@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
@@ -19,7 +20,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z]{3,}[1-9]{1,4}[@][a-z]{4,}[.][a-z]{3,}$")]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-
     });
   }
 
@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
              this.snackBar.open('login Successful !','',{
                duration: 2000,
              });
-
            },error =>{
             this.snackBar.open('Please enter correct data','',{
               duration: 2000,
@@ -49,4 +48,5 @@ export class LoginComponent implements OnInit {
       console.log("Invalid data", this.loginForm.value);
     }
   }
+
 }

@@ -35,6 +35,7 @@ export class UpdateComponent implements OnInit {
       "isPin": false,
       "isTrash": false
     }
+    
     this.note.updateService(data,this.data.noteId).subscribe((res:any)=>
     {
       console.log("update response=",res);
@@ -47,8 +48,9 @@ export class UpdateComponent implements OnInit {
       this.snackBar.open('Failed to update', '', {
       duration: 2000,
       verticalPosition: 'bottom'
+
       });
     }
     )  
   }
-}
+} 

@@ -8,6 +8,7 @@ import { NoteService } from 'src/app/Services/noteService/note.service';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
+  noteId:any
   title:any;
   description:any;
   bgColour:any;
@@ -18,8 +19,10 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data)
+    console.log(this.data.bgColour)
     this.title=this.data.title;
     this.description=this.data.description;
+    this.bgColour=this.data.bgColour
   }
 
   onNoClick(): void {
@@ -27,7 +30,7 @@ export class UpdateComponent implements OnInit {
     { 
       title: this.title,
       description: this.description,
-      "bgColour": "string",
+      bgColour: this.bgColour,
       "isArchive": false,
       "isReminder": false,
       "isPin": false,
@@ -50,7 +53,9 @@ export class UpdateComponent implements OnInit {
     )  
   }
 
-  receiveMessage(event:any){
-     this.onNoClick()
-   }
+   UpdateNoteMessage(event:any){
+     if(event.data !== (null || undefined)){
+       console.log(event.data)
+     this.bgColour = event.data.bgColour} 
+ }
 }

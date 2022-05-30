@@ -11,12 +11,15 @@
      height: 150px;
      border-radius: 12px;
  }
+
    .allicons{
      display: none;
  }
+
  .noteDisplaySetting:hover .allicons{
      display: block; 
  }
+
  .noteDisplaySetting:hover{
     box-shadow: 1px 1px 3px 3px rgba(157, 167, 170, 0.215);
  }
@@ -32,18 +35,16 @@
    font-size: medium;
    font-weight: 400;
   }
-//   p.title{
-//    //word-spacing: 50px;
-// //      font-weight: bold;
-//    }
-
-//    p.description{
-//       word-spacing: 12px;
-//    }
 
   .description{
      margin-left: 18px;
      font-size: medium;
-     //font-weight: 100;
   }
+
+  .gridToList
+{
+    width: 50%;
+    height: 150px;
+    margin-left: 255px;
+}
 

@@ -25,10 +25,6 @@ export class GetAllNotesComponent implements OnInit {
            })
     })
   }
-  
-  // DisplayNoteMessage(event:any) {
-  //    this.getAllNotes();
-  //  }
 
    UpdateNoteMessage(event:any) {
      this.getAllNotes();

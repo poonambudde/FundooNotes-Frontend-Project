@@ -3,6 +3,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import { DataService } from 'src/app/Services/dataService/data.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GridlistService } from 'src/app/Services/gridlistService/gridlist.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,13 +11,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DashboardComponent implements OnDestroy {
 
-  mobileQuery: MediaQueryList;
-
   filteredString: string = '';
   title: string = '';
   grid = false;
   formatGridList = false;
- 
+
+  mobileQuery: MediaQueryList;
+  text = ''; 
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -31,16 +32,26 @@ export class DashboardComponent implements OnDestroy {
   );
 
   private _mobileQueryListener: () => void;
-  nextData: any;
+  search:any;
+  c:boolean=false;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router,private snackBar: MatSnackBar) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router,private snackBar: MatSnackBar,private nextData: GridlistService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  SearchProp(el: HTMLElement, color: string) {
+    el.style.backgroundColor = color;
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  filter(filteredString:any)
+  {
+      this.nextData.dataPipe(filteredString.target.value);
   }
 
   searchString(event:any)
@@ -75,7 +86,7 @@ export class DashboardComponent implements OnDestroy {
   formatListView() {
     this.grid = true
     this.nextData.nextDataUpdate(this.FormatView().valueOf())
-    console.log("value ", this.FormatView())
+    console.log("value= ", this.FormatView().valueOf())
   }
 
   formatGridView() {
@@ -83,9 +94,5 @@ export class DashboardComponent implements OnDestroy {
     this.nextData.nextDataUpdate(this.FormatView().valueOf())
     console.log("value ", this.FormatView())
   }
-
- 
-
-  
 
 }

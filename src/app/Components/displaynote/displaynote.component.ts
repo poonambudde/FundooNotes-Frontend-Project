@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DataService } from 'src/app/Services/dataService/data.service';
+import { GridlistService } from 'src/app/Services/gridlistService/gridlist.service';
 import { UpdateComponent } from '../update/update.component';
 
 @Component({
@@ -19,9 +20,10 @@ export class DisplaynoteComponent implements OnInit {
   @Output()UpdateNoteEvent = new EventEmitter<string>();
 
 
-  constructor(public dialog: MatDialog, private dataService:DataService) { }
+  constructor(public dialog: MatDialog, private dataService:DataService, private nextData:GridlistService) { }
 
   ngOnInit(): void {
+    this.nextData.store.subscribe(a=>this.gridlist=a)
     this.dataService.currentMessage.subscribe(message =>{
       console.log(message)
       this.searchString=message

@@ -13,4 +13,9 @@ export class GridlistService {
     this.info.next(text);
   }
 
+  dataPipe(text:any)
+   {
+     this.info.next(text);
+   }
+
 }

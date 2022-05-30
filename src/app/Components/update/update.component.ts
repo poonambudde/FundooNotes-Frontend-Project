@@ -13,7 +13,6 @@ export class UpdateComponent implements OnInit {
   title:any
   description:any
   bgColour:any
-  @Output() UpdateNoteEvent = new EventEmitter<string>();
 
   constructor(private snackBar: MatSnackBar, private note:NoteService,public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
@@ -60,19 +59,10 @@ export class UpdateComponent implements OnInit {
     )  
   }
   
-//   recieveMessage(event:any){
-//     this.onNoClick();
-//   }
    UpdateNoteMessage(event:any){
-    
      if(event.data !== (null || undefined)){
        console.log(event.data)
      this.bgColour = event.data.bgColour} 
  }
    
-//    refreshMessage(event:any){
-//      if(event.data !== (null || undefined)){
-//        console.log(event.data)
-//      this.bgColour = event.data.bgColour} 
-//  }
 }

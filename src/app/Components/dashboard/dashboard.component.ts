@@ -2,6 +2,8 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { DataService } from 'src/app/Services/dataService/data.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { GridlistService } from 'src/app/Services/gridlistService/gridlist.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnDestroy {
 
-  mobileQuery: MediaQueryList;
+  filteredString: string = '';
+  title: string = '';
+  grid = false;
+  formatGridList = false;
 
-   grid = false;
-   formatGridList = false;
-   filteredString: string = '';
-   title: string = '';
+  mobileQuery: MediaQueryList;
+  text = ''; 
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -29,32 +32,67 @@ export class DashboardComponent implements OnDestroy {
   );
 
   private _mobileQueryListener: () => void;
+  search:any;
+  c:boolean=false;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router,private snackBar: MatSnackBar,private nextData: GridlistService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  SearchProp(el: HTMLElement, color: string) {
+    el.style.backgroundColor = color;
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  searchNote(event:any)
+  filter(filteredString:any)
+  {
+      this.nextData.dataPipe(filteredString.target.value);
+  }
+
+  searchString(event:any)
   {
       console.log("event",event.target.value)
       this.dataService.changeMessage(event.target.value)
   }
 
-  logout()
+  Logout()
   {
     localStorage.removeItem('token');
     this.router.navigateByUrl("/login")
-    console.log("logout sucessfully!!!");
+    console.log("Logout Successfully..!!!");
+    this.snackBar.open('Logout Successfully..!!!','..', {
+      duration: 3000,
+      verticalPosition: 'bottom'
+    })
+  }
+  
+
+   FormatView() {
+    if (this.formatGridList == false) {
+      this.formatGridList = true
+      return this.formatGridList
+    }
+    else {
+      this.formatGridList = false
+      return this.formatGridList
+    }
   }
 
- 
+  formatListView() {
+    this.grid = true
+    this.nextData.nextDataUpdate(this.FormatView().valueOf())
+    console.log("value= ", this.FormatView().valueOf())
+  }
 
-  
+  formatGridView() {
+    this.grid = false
+    this.nextData.nextDataUpdate(this.FormatView().valueOf())
+    console.log("value ", this.FormatView())
+  }
 
 }

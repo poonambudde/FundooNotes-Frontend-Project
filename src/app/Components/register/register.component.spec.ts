@@ -1,14 +1,18 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { RegisterComponent } from './register.component';
 
-describe('RegisterComponent', () => {
+fdescribe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ RegisterComponent ],
+      imports: [ReactiveFormsModule, HttpClientModule,MatSnackBarModule]
     })
     .compileComponents();
   });
@@ -22,4 +26,10 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Hello', () => {
+    component.onSubmit()
+    expect(component.onSubmit).toBeTruthy();
+  });
+
 });

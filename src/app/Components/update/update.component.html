@@ -1,4 +1,4 @@
-<div class="note" [style.background]="data.bgColour">
+<div class="note" [style.background]="bgColour">
 
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <input class="mat-title" placeholder="Title" matInput mat-dialog-title [(ngModel)]="title"  >
@@ -6,6 +6,6 @@
   <div fxLayout="row" fxLayoutAlign="space-between center">
       <input class="mat-title" placeholder="Description" matInput mat-dialog-title  [(ngModel)]="description">
   </div>
-  <app-icons [notedata]="data"  style="margin-top: 30px;"></app-icons>
+  <app-icons class="icons" (UpdateNoteEvent)="UpdateNoteMessage($event)" [notedata]="data"  style="margin-top: 30px;"></app-icons>
   <button class="button" (click)="onNoClick()">Close</button>
 </div>

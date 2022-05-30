@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NoteService } from 'src/app/Services/noteService/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
@@ -9,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateNoteComponent implements OnInit {
   isShow=false;
   title:any;
-  desc:any;
+  description:any;
   @Output() messageEvent = new EventEmitter<string>();
   
   constructor(private note:NoteService ,private snackBar: MatSnackBar ) { }
@@ -17,17 +18,17 @@ export class CreateNoteComponent implements OnInit {
   ngOnInit(): void {
   }
   Show() {
-    console.log("insideShow");
+
     this.isShow = true;
   }
   close() {
     this.isShow = false;
-    if ((this.title != null && this.title != "") || (this.desc != null && this.desc != "")) {
-      console.log(this.title, this.desc)
+    if ((this.title != null && this.title != "") || (this.description != null && this.description != "")) {
+      console.log(this.title, this.description)
       let data={
         "title": this.title,
-        "description": this.desc,
-        "bgColour": "Red",
+        "description": this.description,
+        "bgColour": "White",
         "isArchive": false,
         "isReminder": false,
         "isPin": false,

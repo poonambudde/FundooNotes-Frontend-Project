@@ -1,5 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UpdateComponent } from './update.component';
 
 describe('UpdateComponent', () => {
@@ -8,7 +10,8 @@ describe('UpdateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateComponent ]
+      declarations: [ UpdateComponent ],
+      imports: [HttpClientModule, MatSnackBarModule,MatDialogRef ]
     })
     .compileComponents();
   });

@@ -1,14 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CreateNoteComponent } from './create-note.component';
 
-describe('CreateNoteComponent', () => {
+fdescribe('CreateNoteComponent', () => {
   let component: CreateNoteComponent;
   let fixture: ComponentFixture<CreateNoteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateNoteComponent ]
+      declarations: [ CreateNoteComponent ],
+      imports: [HttpClientModule,MatSnackBarModule]
     })
     .compileComponents();
   });

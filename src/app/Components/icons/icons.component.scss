@@ -1,30 +1,25 @@
-.icons button{
+.icons button {
     margin-left: 14px;
-    margin-top: 30px;
-    //border-color: white;
+    margin-top: 23px;
     background-color: white;
     border: none;
-    opacity: 50px;
-    border:0px;
+    border: 0px;
     background-color: transparent;
+    opacity:0.7;
 }
 
-.bg-color{
+.bg-color {
     width: 55px;
-    //width: 30px;
-    //border: 2px solid red;
     height: 30px;
-      display: flex;
-     flex-wrap: wrap;
-      flex-direction: row;
-      border-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-color: black;
 }
 
 .colorboxSetting
 {
     background-color: transparent;
-    //width: 30px;
-    //height: 30px;
     border-radius: 20px;
     margin: auto;
     border: 0px solid;
@@ -40,5 +35,4 @@
 
  button:hover{
      background-color: rgb(247, 233, 217) ; 
-     //border-color: black;
  }

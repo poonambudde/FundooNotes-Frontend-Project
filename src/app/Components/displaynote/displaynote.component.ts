@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateComponent } from '../update/update.component';
+import { DataService } from 'src/app/Services/dataService/data.service';
 
 @Component({
   selector: 'app-displaynote',
@@ -9,16 +10,20 @@ import { UpdateComponent } from '../update/update.component';
 })
 export class DisplaynoteComponent implements OnInit {
   filteredString = '';
+  searchString:any;
 
   @Input() receivedNoteList:any;
-  @Output() updateEvent = new EventEmitter<string>();
-  @Output() archiveEvent = new EventEmitter<string>();
-  @Output() trashEvent = new EventEmitter<string>();
-  @Output() deleteEvent = new EventEmitter<string>();
+ @Output()DisplayNoteEvent = new EventEmitter<string>();
+  @Output()UpdateNoteEvent = new EventEmitter<string>();
 
-  constructor(public dialog: MatDialog) { }
+
+  constructor(public dialog: MatDialog, private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.dataService.currentMessage.subscribe(message =>{
+    console.log(message)
+    this.searchString=message
+    } )
   }
   openDialog(note:any): void {
     const dialogRef = this.dialog.open(UpdateComponent, {
@@ -29,20 +34,16 @@ export class DisplaynoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.updateEvent.emit("Hello")
+      this.UpdateNoteEvent.emit("Hello")
     });
   }
 
-   archiveMessage(event:any){
-     this.archiveEvent.emit("Hello")
-   }
+  DisplayNoteMessage(event:any){
+     this.DisplayNoteEvent.emit("Hello")
+    }
 
-   trashMessage(event:any){
-    this.trashEvent.emit("Hello")
-  }
-
-   deleteMessage(event:any){
-    this.deleteEvent.emit("Hello")
+  UpdateNoteMessage(event:any) {
+    this.UpdateNoteEvent.emit("Hello")
   }
 
 }

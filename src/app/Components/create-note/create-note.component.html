@@ -1,22 +1,22 @@
-<div class="noteSetting" style="width: 55%;margin:35px; margin-left:250px">
+<div class="noteSetting">
     <div *ngIf="isShow">
-        <input  class="title" style="font-size: large ;width: 300px;border:none;" placeholder="Title" [(ngModel)]="title">
-        <img style="margin-left: 250px;" src="../../../assets/Note Icons/pin note.svg">
+        <input class="title" placeholder="Title" [(ngModel)]="title">
+        <img class="pin" src="../../../assets/Note Icons/pin note.svg">
     </div>
-    <div fxLayout="row" *ngIf="!isShow || isShow" (click)= "Show()">
+    <div fxLayout="row" *ngIf="!isShow || isShow" (click)="Show()">
         <div *ngIf="!isShow || isShow">
-            <input class="takenote" style="height:2px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
+            <input class="takenote" placeholder="Take a note..." [(ngModel)]="description">
         </div>
-        <div *ngIf="!isShow">
-            <span >
-                <img style="padding-left: 35px; " src="../../../assets/Note Icons/check_box.svg">
-                <img style="padding-left: 35px;" src="../../../assets/Note Icons/brush.svg">               
-                <img style="padding-left: 35px;" src="../../../assets/Note Icons/add image.svg">
-            </span>
-        </div>   
+        <div *ngIf="!isShow" class="icons">
+            <button mat-icon-button matTooltip="New list"> <img src="../../../assets/Note Icons/check_box.svg"></button>
+            <button mat-icon-button matTooltip=" New note with drawing"> <img
+                    src="../../../assets/Note Icons/brush.svg"></button>
+            <button mat-icon-button matTooltip=" New note with image"> <img
+                    src="../../../assets/Note Icons/add image.svg"></button>
+        </div>
     </div>
-    <div *ngIf="isShow" fxLayout="row" fxLayoutAlign="space-between centre">
+    <div *ngIf="isShow" class="close" fxLayout="row" fxLayoutAlign="space-between centre">
         <app-icons></app-icons>
-        <button  mat-button style="font-size: large;background-color: white;border:0px white;margin-right: 40px;padding-top:35px;" (click)="close()" >Close</button>
+        <button mat-button (click)="close()">Close</button>
     </div>
-</div> 
+</div>

@@ -1,5 +1,8 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { DataService } from 'src/app/Services/dataService/data.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +13,8 @@ export class DashboardComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
 
-   grid = false;
-   formatGridList = false;
-   filteredString: string = '';
+  filteredString: string = '';
+  title: string = '';
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -29,9 +31,7 @@ export class DashboardComponent implements OnDestroy {
   private _mobileQueryListener: () => void;
   nextData: any;
 
-
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService,private router:Router,private snackBar: MatSnackBar) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -40,34 +40,22 @@ export class DashboardComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
-  filter(event:any)
+  
+  searchString(event:any)
   {
-      this.nextData.dataPipe("event",event.target.value);
-      this.nextData.dataPipe("event",event);
+      console.log("event",event.target.value)
+      this.dataService.changeMessage(event.target.value)
   }
 
-  FormatView() {
-    if (this.formatGridList == false) {
-      this.formatGridList = true
-      return this.formatGridList
-    }
-    else {
-      this.formatGridList = false
-      return this.formatGridList
-    }
+  Logout()
+  {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl("/login")
+    console.log("Logout Successfully..!!!");
+    this.snackBar.open('Logout Successfully..!!!','..', {
+      duration: 3000,
+      verticalPosition: 'bottom'
+    })
   }
-
-  formatListView() {
-    this.grid = false
-    this.nextData.nextDataUpdate(this.FormatView().valueOf())
-    console.log("value ", this.FormatView())
-  }
-
-  formatGridView() {
-    this.grid = true
-    this.nextData.nextDataUpdate(this.FormatView().valueOf())
-    console.log("value ", this.FormatView())
-  }
-
+  
 }

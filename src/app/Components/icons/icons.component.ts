@@ -63,6 +63,7 @@ archive() {
       duration: 2000,
       verticalPosition: 'bottom'
     })
+
   ) 
 }
          
@@ -115,7 +116,7 @@ Unarchive() {
     })
   }
 
-  changeColor(color:any){
+changeColor(color:any){
     console.log(color);
 
     this.note.changeColorService(this.notedata.noteId,color).subscribe((response: any) => {

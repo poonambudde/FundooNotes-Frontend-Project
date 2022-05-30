@@ -50,7 +50,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ArchiveComponent,
     TrashComponent,
     FilterPipe
-    
 
   ],
   imports: [

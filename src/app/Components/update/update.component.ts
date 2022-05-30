@@ -23,8 +23,6 @@ export class UpdateComponent implements OnInit {
     this.title=this.data.title
     this.description=this.data.description
     this.bgColour=this.data.bgColour
-    
- 
   }
 
   onNoClick(): void {
@@ -40,6 +38,7 @@ export class UpdateComponent implements OnInit {
       "isPin": false,
       "isTrash": false
     }
+    
     this.note.updateService(data,this.data.noteId).subscribe((res:any)=>
     {
       console.log("update response=",res);
@@ -61,7 +60,7 @@ export class UpdateComponent implements OnInit {
   
    UpdateNoteMessage(event:any){
      if(event.data !== (null || undefined)){
-       console.log(event.data)
+     console.log(event.data)
      this.bgColour = event.data.bgColour} 
  }
    

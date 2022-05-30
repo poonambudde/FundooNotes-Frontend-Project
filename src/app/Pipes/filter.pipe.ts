@@ -20,5 +20,4 @@ export class FilterPipe implements PipeTransform {
     return note.title.toLocaleLowerCase().includes(args) | note.description.toLocaleLowerCase().includes(args); 
     })
    }
-
   }

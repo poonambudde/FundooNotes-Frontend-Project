@@ -1,2 +1,2 @@
 <app-create-note (messageEvent)="receiveMessage($event)"></app-create-note>
-<app-displaynote [receivedNoteList]="noteList" (updateEvent)="receiveMessage($event)"(archiveEvent)="archiveMessage($event)"(deleteEvent)="deleteMessage($event)"(trashEvent)="trashMessage($event)"></app-displaynote>
+<app-displaynote [receivedNoteList]="noteList"  (UpdateNoteEvent)="UpdateNoteMessage($event)"></app-displaynote>

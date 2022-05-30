@@ -62,6 +62,5 @@ export class UpdateComponent implements OnInit {
      if(event.data !== (null || undefined)){
      console.log(event.data)
      this.bgColour = event.data.bgColour} 
- }
-   
+ } 
 }

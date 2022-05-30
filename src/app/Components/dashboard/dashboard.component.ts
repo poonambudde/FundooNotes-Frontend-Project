@@ -41,6 +41,11 @@ export class DashboardComponent implements OnDestroy {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   
+  filter(filteredString:any)
+  {
+      this.nextData.dataPipe(filteredString.target.value);
+  }
+  
   searchString(event:any)
   {
       console.log("event",event.target.value)

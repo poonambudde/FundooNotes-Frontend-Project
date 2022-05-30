@@ -1,34 +1,69 @@
-.title{
+.title {
     min-height: 10px;
     padding: 10px 15px;
     padding-top: 0px;
     padding-right: 15px;
     padding-bottom: 30px;
     padding-left: 15px;
-    
+    font-size: large;
+    width: 300px;
+    border: none;
 }
 
-.takenote{
+.takenote {
     min-height: 27px;
     padding: 10px 15px;
     padding-top: 0px;
     padding-right: 15px;
     padding-bottom: 0px;
     padding-left: 15px;
+    height: 2px;
+    width: 300px;
+    border: none;
 }
 
-.noteSetting{
-    border: 1px solid ;
-    border-color:white;
-    box-shadow: 1px 1px 1px 1px gray;
+.noteSetting {
+    border: 1px solid;
+    border-color: white;
+    box-shadow: 1px 1px 3px 3px rgba(157, 167, 170, 0.215);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: white;
-    //min-height: 27px;
+    width: 50%;
+    margin: 35px;
+    margin-left: 250px;
+}
 
-    }
-   // input {border:0;outline:0;}
-    input {border:0;outline:0;}
+.icons {
+    padding-left: 185px;
+    opacity:0.7;
+}
+
+.icons button {
+    border: none;
+    background-color: white;
+    width:52px;
+    height:25px;
+    padding-bottom: 30px;
+}
+
+input {
+    border: 0;
+    outline: 0;
+}
+
+.close button {
+    font-size: large;
+    background-color: white;
+    border:0px white;
+    margin-right: 40px;
+    padding-top:15px;
+}
+
+.pin{
+    margin-left: 310px;
+    opacity:0.7;
+}

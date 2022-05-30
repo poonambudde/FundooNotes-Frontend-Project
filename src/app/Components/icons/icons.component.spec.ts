@@ -28,3 +28,4 @@ fdescribe('IconsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

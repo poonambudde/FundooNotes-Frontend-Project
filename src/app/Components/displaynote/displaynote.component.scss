@@ -4,11 +4,12 @@
      margin-left: 70px;
      border-color: #e0e0e0;
      margin-top: 50px;
-     border-radius: 14px;
-     width: 230px;
-     height: 100px;
      padding-top: 10px;
      background-color: white;
+     margin: 15px; 
+     width: 295px;
+     height: 150px;
+     border-radius: 12px;
  }
    .allicons{
      display: none;
@@ -19,3 +20,30 @@
  .noteDisplaySetting:hover{
     box-shadow: 1px 1px 3px 3px rgba(157, 167, 170, 0.215);
  }
+
+ .icons{
+    margin-left: -8px;
+    padding-top:5px;
+ }
+
+  .title{
+   margin-left: 18px;
+   margin-top: 10px;
+   font-size: medium;
+   font-weight: 400;
+  }
+//   p.title{
+//    //word-spacing: 50px;
+// //      font-weight: bold;
+//    }
+
+//    p.description{
+//       word-spacing: 12px;
+//    }
+
+  .description{
+     margin-left: 18px;
+     font-size: medium;
+     //font-weight: 100;
+  }
+

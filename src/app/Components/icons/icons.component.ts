@@ -18,14 +18,16 @@ export class IconsComponent implements OnInit {
   isTrash:any;
 
   @Input() notedata:any;
-
-  @Output() UpdateEvent = new EventEmitter<any>();
+  @Output() UpdateNoteEvent = new EventEmitter<any>();
+  @Output() DisplayNoteEvent = new EventEmitter<any>();
+  
   isDisplaynoteComponent=false;
   isArchiveComponent=false;
   isTrashComponent=false;
 
-  colorArray = [{Colorcode:"white", name:"White"},{Colorcode:"#f28b82", name:"Red"},{Colorcode:"#fbbc04", name:"Orange"},{Colorcode:"#fff475", name:"Yellow"},{Colorcode:"#ccff90", name:"Green"},{Colorcode:"#a7ffeb", name:"Teel"},
-  {Colorcode:"#cbf0f8", name:"Blue"},{Colorcode:"#aecbfa", name:"Dark-Blue"},{Colorcode:"#d7aefb", name:"Purple"},{Colorcode:"#fdcfe8", name:"Pink"},{Colorcode:"#e6c9a8", name:"Brown"},{Colorcode:"#e8eaed", name:"Gray"}];
+  colorArray = [{Colorcode:"white", name:"White"},{Colorcode:"rgb(238, 188, 188)", name:"Red"},{Colorcode:"#fbbc04", name:"Orange"},{Colorcode:"#fff475", name:"Yellow"},{Colorcode:"rgb(175, 215, 175)", name:"Green"},{Colorcode:"aqua", name:"aqua"},
+  {Colorcode:"#cbf0f8", name:"Blue"},{Colorcode:"teal", name:"teal"},{Colorcode:"#d7aefb", name:"Purple"},{Colorcode:"#fdcfe8", name:"Pink"},{Colorcode:"#e6c9a8", name:"Brown"},{Colorcode:"#e8eaed", name:"Gray"}];
+
   
   constructor(private note: NoteService,private snackBar: MatSnackBar,private route: ActivatedRoute,public dialog: MatDialog) { }
 
@@ -50,10 +52,9 @@ export class IconsComponent implements OnInit {
   }
 
 archive() {
-       this.isArchive=false;
        this.note.archiveService(this.notedata.noteId).subscribe((response: any) => {
          console.log(response);
-         this.UpdateEvent.emit(response)
+         this.UpdateNoteEvent.emit(response)
          this.snackBar.open('Note Archived successfully..', '', {
           duration: 3000,
           verticalPosition: 'bottom'
@@ -68,7 +69,7 @@ archive() {
 Unarchive() {
   this.note.archiveService(this.notedata.noteId).subscribe((res:any)=>{
     console.log("unarchive a note",res);
-    this.UpdateEvent.emit(res)
+    this.UpdateNoteEvent.emit(res)
     this.snackBar.open('Note Unarchived', '', {
       duration: 3000,
       verticalPosition: 'bottom'
@@ -76,10 +77,10 @@ Unarchive() {
   })
 }
 
-  trash(note:any) {
+  trash() {
     this.note.trashNoteService(this.notedata.noteId,this.data).subscribe((response: any) => {
       console.log(response);
-      this.UpdateEvent.emit(response)
+      this.UpdateNoteEvent.emit(response)
       this.snackBar.open('Note trashed successfully..', '', {
           duration: 3000,
           verticalPosition: 'bottom'
@@ -94,7 +95,7 @@ Unarchive() {
     deleteForeverNotes(){
     this.note.deleteNoteService(this.notedata.noteId).subscribe((response:any)=>{
       console.log("Note deleted successfully!!!", response);
-      this.UpdateEvent.emit(response);
+      this.UpdateNoteEvent.emit(response);
       this.snackBar.open('Note deleted successfully!!!', '', {
         duration: 3000,
         verticalPosition: 'bottom'
@@ -106,7 +107,7 @@ Unarchive() {
   {
     this.note.trashNoteService(this.notedata.noteId,this.data).subscribe((response:any)=>{
     console.log("note restored",response);
-    this.UpdateEvent.emit(response);
+    this.UpdateNoteEvent.emit(response);
     this.snackBar.open('Note restored successfully!!!', '', {
       duration: 3000,
       verticalPosition: 'bottom'
@@ -117,10 +118,10 @@ Unarchive() {
   changeColor(color:any){
     console.log(color);
 
-    this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {
+    this.note.changeColorService(this.notedata.noteId,color).subscribe((response: any) => {
       console.log(response);
       
-      this.UpdateEvent.emit(response)
+      this.UpdateNoteEvent.emit(response)
       this.snackBar.open('Note Background Color Changed Successfully!!!', '', {
           duration: 3000,
           verticalPosition: 'bottom'

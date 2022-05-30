@@ -1,4 +1,3 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DataService } from 'src/app/Services/dataService/data.service';
@@ -11,11 +10,13 @@ import { UpdateComponent } from '../update/update.component';
 })
 export class DisplaynoteComponent implements OnInit {
   filteredString = '';
-  Searchtitle:any;
-   gridList: any;
+  searchString:any;
+  gridlist: any;
+
 
   @Input() receivedNoteList:any;
-  @Output()DisplayEvent = new EventEmitter<string>();
+  @Output()DisplayNoteEvent = new EventEmitter<string>();
+  @Output()UpdateNoteEvent = new EventEmitter<string>();
 
 
   constructor(public dialog: MatDialog, private dataService:DataService) { }
@@ -23,7 +24,7 @@ export class DisplaynoteComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.currentMessage.subscribe(message =>{
       console.log(message)
-      this.Searchtitle=message
+      this.searchString=message
     } )
   }
   openDialog(note:any): void {
@@ -35,13 +36,17 @@ export class DisplaynoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.DisplayEvent.emit("Hello")
+      this.UpdateNoteEvent.emit("Hello")
     });
   }
 
-  DisplayMessage(event:any){
-     this.DisplayEvent.emit("Hello")
-   }
+   DisplayNoteMessage(event:any){
+     this.DisplayNoteEvent.emit("Hello")
+    }
+
+  UpdateNoteMessage(event:any) {
+    this.UpdateNoteEvent.emit("Hello")
+  }
 
 
 }
